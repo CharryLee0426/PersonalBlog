@@ -18,6 +18,7 @@
 
 ```json
 {type: "click", timeStamp: 622655, target: {…}, currentTarget: {…}, mark: {…}, …}
+<<<<<<< HEAD
 
 {
 		changedTouches: undefined,
@@ -42,3 +43,22 @@
 
 ### 2. event 各个属性值
 
+=======
+changedTouches: undefined
+currentTarget:
+dataset: {title: "-7/6℃"}
+id: ""
+__proto__: Object
+detail: {x: 281.640625, y: 272.4375}
+mark: {}
+mut: false
+target:
+dataset: {title: "-7/6℃"}
+id: ""
+__proto__: Object
+timeStamp: 622655
+touches: undefined
+type: "click"
+```
+
+>>>>>>> 89233fee35c241bdde9f1780f19d1a56c8da9960
