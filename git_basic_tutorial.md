@@ -66,8 +66,8 @@ git init
 
 输入命令
 
-```
-git remote add upstream URL
+```bash
+git remote add upstream [URL]
 ```
 
 因为自己提交代码最后要提交到 「上游」，也就是被 fork 的那个仓库，所以需要进行如下配置。
@@ -76,7 +76,7 @@ git remote add upstream URL
 
 输入命令
 
-```
+```bash
 git remote -v
 ```
 
@@ -90,7 +90,7 @@ git remote -v
 
 输入命令
 
-```
+```bash
 git pull --rebase upstream master
 ```
 
@@ -104,7 +104,7 @@ git pull --rebase upstream master
 
 输入命令
 
-```
+```bash
 git checkout -b yourbranchname
 ```
 
@@ -122,7 +122,7 @@ git checkout -b yourbranchname
 
 输入命令
 
-```
+```bash
 git status
 ```
 
@@ -130,7 +130,7 @@ git status
 
 输入命令
 
-```
+```bash
 git add .
 ```
 
@@ -138,7 +138,7 @@ git add .
 
 输入命令
 
-```
+```bash
 git commit -s -m "yourcommentforthiscommitment"
 ```
 
@@ -146,7 +146,7 @@ git commit -s -m "yourcommentforthiscommitment"
 
 输入命令
 
-```
+```bash
 git push -u origin yourbranch 
 ```
 
@@ -164,25 +164,25 @@ git push -u origin yourbranch
 
 ### 11. 删除分支
 
-```
+```bash
 git checkout branchname
 ```
 
 切换分支
 
-```
+```bash
 git branch -a
 ```
 
 列出所有分支
 
-```
+```bash
 git checkout -d branchname
 ```
 
 删除分支
 
-```
+```bash
 git push origin --delete branchname
 ```
 
@@ -216,7 +216,7 @@ git remote add origin you/repo.git	# 设置 github 端的源为自己 fork 仓�
 git remote add upstream dalao/repo.git # 设置 github 端的上游为创始者仓库的 URL
 ```
 
-#### 13. 新增：关于 git pull 和 git reset 的区别
+### 13. 新增：关于 git pull 和 git reset 的区别
 
  为什么 git pull 不能将自己在本地删除的文件恢复
 
@@ -230,3 +230,16 @@ git pull
 git reset
 # A, C
 ```
+
+### 14. 新增：如何配置本地的 macOS GitHub环境
+
+感觉虽然 gitee 也不错，但还是 GitHub 的体验更好一些。但是一些众所周知的原因 GitHub 的访问体验在大陆很不好，所以使用前要提前设置一下。
+
+需要提前说明的是，要自己准备好科学上网手段，这里大家自由发挥，我是从一个看片老哥手里拿到的稳定ss。我们需要设置 git 工具走 shadowsocks 代理，要给 git 一个全局变量。
+
+```bash
+git config --global http.proxy "socks5://127.0.0.1:1086" # macOS 默认是 1086 端口
+git config --global https.proxy "socks5://127.0.0.1:1086"
+```
+
+然后就可以正常使用了，不过这样有一个缺点，就是 git 工具必须得在 shadowsocks 开启的情况下才可以使用。一但 shadowsocks 节点/订阅挂掉就失去了与世界先进思想交流的机会。
