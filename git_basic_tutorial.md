@@ -242,4 +242,43 @@ git config --global http.proxy "socks5://127.0.0.1:1086" # macOS 默认是 1086 
 git config --global https.proxy "socks5://127.0.0.1:1086"
 ```
 
-然后就可以正常使用了，不过这样有一个缺点，就是 git 工具必须得在 shadowsocks 开启的情况下才可以使用。一但 shadowsocks 节点/订阅挂掉就失去了与世界先进思想交流的机会。
+然后就可以正常使用了，不过这样有一个缺点，就是 git 工具必须得在 shadowsocks 开启的情况下才可以使用。一但 shadowsocks 节点/订阅挂掉就失去了与世界先进思想交流的机会。这时可以通过移除 proxy 重新访问 Gitee。
+
+```bash
+git config --global --unset http.proxy "socks5://127.0.0.1:1086"
+git config --global --unset https.proxy "socks5://127.0.0.1:1086"
+```
+
+### 15. 新增：如何配置 Xcode 上的 GitHub 环境
+
+如果按照新增问题 14 的操作进行的话，IDEA 和命令行上可以正常进行拉取和推送操作。但是在 Xcode 上 git 工具还是无法正常从仓库拉取和推送。我从一篇文章上找到了关于这个问题的报告，[点击这里](https://openradar.appspot.com/radar?id=5008610828484608)以访问（可能需要科学上网）。这里简述一下这个问题的原因。Xcode 使用了一个 `helper service` （com.apple.dt.Xcode.sourcecontrol.Git）访问 GIT 服务器，这个服务使用了一个开源库 `libgit2.dylib (version 0.26.0)`。当连接远程仓库时，该进程调用了这个库的一个 API `git_remote_connect(...)`，这个库通过一个 `git_proxy_options` 的枚举去选择 git 的代理策略。定义如下：
+
+```c
+/**
+ * The type of proxy to use.
+ */
+typedef enum {
+	/**
+	 * Do not attempt to connect through a proxy
+	 *
+	 * If built against libcurl, it itself may attempt to connect
+	 * to a proxy if the environment variables specify it.
+	 */
+	GIT_PROXY_NONE,
+	/**
+	 * Try to auto-detect the proxy from the git configuration.
+	 */
+	GIT_PROXY_AUTO,
+	/**
+	 * Connect via the URL given in the options
+	 */
+	GIT_PROXY_SPECIFIED,
+} git_proxy_t;
+```
+
+Xcode 调用时指定了 GIT_PROXY_NONE（不使用代理），这样就覆盖了 --global 级别的 git config，于是就无法通过代理访问 git 了。
+
+解决方法：
+
+1. 找到 `libgit2.dylib` 的源代码将其客制化，把调用的 GIT_PROXY_NONE 改为 GIT_PROXY_AUTO，不过我用 Spotlight 没有找到这个库的具体位置，也不太敢修改代码。这个方案只是理论可行，可以尝试但不建议；
+2. 其实文章也给出了方法，就是在项目的路径下通过 Terminal 执行 `git config` 操作（注意，不必加入 `--global`）对项目设置代理，这样 Xcode 执行 git 操作时就可以识别到针对项目的代理配置，通过代理进行 git pull/push/clone 操作了。
