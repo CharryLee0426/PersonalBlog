@@ -282,3 +282,5 @@ Xcode 调用时指定了 GIT_PROXY_NONE（不使用代理），这样就覆盖�
 
 1. 找到 `libgit2.dylib` 的源代码将其客制化，把调用的 GIT_PROXY_NONE 改为 GIT_PROXY_AUTO，不过我用 Spotlight 没有找到这个库的具体位置，也不太敢修改代码。这个方案只是理论可行，可以尝试但不建议；
 2. 其实文章也给出了方法，就是在项目的路径下通过 Terminal 执行 `git config` 操作（注意，不必加入 `--global`）对项目设置代理，这样 Xcode 执行 git 操作时就可以识别到针对项目的代理配置，通过代理进行 git pull/push/clone 操作了。
+
+这里的 open radar 是个好网站，关注 Apple Platform 相关问题的可以好好看看这个网站。
