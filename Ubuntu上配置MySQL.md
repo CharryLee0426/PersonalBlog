@@ -6,16 +6,16 @@
 
 首先，对于一台新的服务器，如果是云服务器的话可以省略掉换源的步骤，必须先更新包管理器的信息。输入如下指令更新。
 
-```bash
-sudo apt-get update
+```shell
+$ sudo apt-get update
 ```
 
 云服务器默认是在 sudo 身份下运行，其实不加 sudo 一般也没有什么大问题。
 
 然后开始安装 mysql-server 和 mysql-client。
 
-```bash
-sudo apt-get install mysql-server mysql-client
+```shell
+$ sudo apt-get install mysql-server mysql-client
 ```
 
 等待一段时间后安装完成，然后执行 `mysql --version` 检查是否安装成功。显示出版本信息即为成功。
@@ -50,8 +50,8 @@ ERROR java.SQLException: Access denied for 'root'@'localhost' (using password: N
 
 这里提示了 **DO NOT TOUCH**，那就一下也别动，这个文件记录的就是该服务器上 MySQL 系统级用户的信息，如果这个文件丢了，那就只能重装了，GG。然后用这个账号登录 MySQL。
 
-```bash
-mysql -u debian-sys-maint -p
+```shell
+$ mysql -u debian-sys-maint -p
 password: [yourpassword]
 ```
 

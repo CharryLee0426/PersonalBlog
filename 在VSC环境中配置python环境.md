@@ -25,7 +25,9 @@ venv的作用可以理解为为一个特定的项目建立的一个python环境�
 
 2. 在该文件夹下运行terminal或者cmd，输入以下命令
 
-   `python -m venv env`
+   ```shell
+   $ python -m venv env
+   ```
 
    然后就会在该文件夹下生成一个名为env的文件夹，即为我们生成的虚拟环境。
 

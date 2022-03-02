@@ -12,14 +12,14 @@ Docker 简单来说就是虚拟机的进一步抽象化，相比起虚拟机，D
 
 Docker 的主要命令有
 
-```bash
-docker build -t <tagname> .
+```shell
+$ docker build -t <tagname> .
 # <tagname> is your iamge name, . means that you will search Dockerfile in the current directory for building.
 ```
 
 这个命令是从源码按照 `Dockerfile` 的指示构建 Docker Image。
 
-```bash
+```shell
 docker run -dp <host_port>:<container_port> <image_name>
 # -d stands for depatched(running background), -p means that create a port mapping.
 ```
@@ -28,14 +28,14 @@ docker run -dp <host_port>:<container_port> <image_name>
 
 Image 和 Container 的关系类似于类与实例的关系。一个 image 可以创建多个 container。不过多个 container 的文件系统不共享，即容器 A 作出的修改在容器 B 中并不生效。
 
-```bash
-docker ps
+```shell
+$ docker ps
 ```
 
 这个命令可以将现在正在运行的 container 列出。
 
-```bash
-docker exec <container_id> <command>
+```shell
+$ docker exec <container_id> <command>
 # command will run in your container.
 ```
 

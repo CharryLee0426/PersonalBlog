@@ -12,8 +12,8 @@ For installing homebrew on Mac running on Apple silicon, you can see this websit
 
 Use the following simple command to install redis:
 
-```bash
-brew install redis
+```shell
+$ brew install redis
 ```
 
 If you really don't want to install it with homebrew, you can see the official website of redis to install.
@@ -28,13 +28,13 @@ After install, you can start the service backgroundly or just in a terminal.
 
 Use the following simple command to start service backgoundly:
 
-```bath
-brew services start redis
+```shell
+$ brew services start redis
 ```
 
 If success, you will see that:
 
-```bash
+```shell
 ==> Successfully started `redis` (label: homebrew.mxcl.redis)
 ```
 
@@ -58,8 +58,8 @@ You can test if your redis service is running by using `redis-li ping`. If the r
 
 Use the following command to stop service backgroundly:
 
-```bash
-brew services stop redis
+```shell
+$ brew services stop redis
 ```
 
 If success, you will see that:
