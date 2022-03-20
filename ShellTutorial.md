@@ -633,3 +633,5 @@ To remove the definition of a function from the shell, use the unset command wit
 ## 2. In the End
 
 You can use some shell scripts to make your routine jobs more efficient. However, the best way you improve your efficiency is to search the existed scripts which has been tested by many developers. It's very silly to write some scripts yourself.
+
+On 2022/03/20, I wrote a script that can create python virtual environment more quickly.
