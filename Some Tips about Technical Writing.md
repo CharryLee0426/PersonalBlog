@@ -42,7 +42,8 @@ Another type of super-long sentence that frequently occurs in technical papers i
   * Bottom thickness 0.90 meters
   * Overall width 26.6 meters
   * Overall length of the axial cord 304.5 meters
-  * Length of the jacking section 148.8           
+  * Length of the jacking section 148.8 meters (approx.)
+  * Weight of the case 24,127 meters (approx.)           
 
 ### 2.3 Prefacing the main idea of a sentence by stating the purpose, location or reason first
 
