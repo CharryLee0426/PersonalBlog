@@ -2,7 +2,7 @@
 
 ## 1. Brief Introduction
 
-I read a report named *The Most Common Habits from more than 200 English Papers written by Graduate Chinese Engineering Studets* by Felicia Brittman. Felicia is a patent examiner of  the Patent and Trademark Office in Detroit, Michigan (result from the Google). The report talk about some of the most common mistakes or bad habits which Chinese-English writers have. I read the entire report and learnt a lot from it. Therefore, I want to make a summary about the report.
+I read a report named *The Most Common Habits from more than 200 English Papers written by Graduate Chinese Engineering Studets* by Felicia Brittman. Felicia is a patent examiner of  the Patent and Trademark Office in Detroit, Michigan (result from the Google). The report talks about some of the most common mistakes or bad habits which Chinese-English writers have. I read the entire report and learnt a lot from it. Therefore, I want to make a summary about the report.
 
 In this paper, I will list some bad habits and declare why they are bad or improper. Then I will pick the advices the report mentioned to get rid of these habits.
 
