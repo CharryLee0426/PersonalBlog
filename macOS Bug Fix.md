@@ -25,4 +25,7 @@ pkill -f SCIM.app
 killall Dock
 ```
 
+## 5. Airdrop Freezed
+There are some situations that you can't click the cancel button or do any other thing when you share some files (whatever their size are big or not), especially image files. The only solution is that force quiting your finder and it'll be reopened by the system automatically.
+
 ***To be continued...***
