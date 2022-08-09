@@ -61,7 +61,7 @@ This problem is caused by the different sequences of phrases between Chinese and
 
 * **Correct**
 
-  The BDs for $\Delta=0.0,0.001,0.001$ are shown in *Fig. 8* when *U* is taken as the control parameter.
+  The BDs for $\Delta=0.0,0.001,0.005$ are shown in *Fig. 8* when *U* is taken as the control parameter.
 
 ### 2.5 "which or that"
 
@@ -108,7 +108,7 @@ Variables, especially those of the English alphabet, should be italicised in tec
 
 ### 2.10 'such as' and 'etc.'
 
-Such as means 'for example' and implied that an **incomplete list** will follow. Therefore, you should use 'such as' and 'etc.' at the same time.
+Such as means 'for example' and implied that an **incomplete list** will follow. Therefore, you should not use 'such as' and 'etc.' at the same time.
 
 ### 2.11 Some tips about the technical paper writing
 
@@ -124,4 +124,4 @@ Such as means 'for example' and implied that an **incomplete list** will follow.
 
 ### 3. Appendix: a guide map about when to use a, an and the
 
-![](https://pic.imgdb.cn/item/6278c74e0947543129f71c6d.png)
+![](https://pic.imgdb.cn/item/6278c74e0947543129f71c6d.png)r
