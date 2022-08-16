@@ -224,3 +224,26 @@ _swap:                                  ; @swap
 前两句赋给 x8 寄存器 &num，然后将从 sp + 32 开始的 4 个 `long long int` 大小的地方存 num 数组。注意，这里的存储是小端存储。
 
 之后就是执行 `printf` 函数了。
+
+### 3. 从 .s 编译到可执行程序
+.s --> .o
+
+```
+as -o <filename>.o <filename>.s
+```
+
+.o --> executive file (binary file)
+
+```
+ld -o <filename> <filename>.o
+-lSysten
+-syslibroot `xcrun -sdk macosx --show-sdk-path`
+-e start
+-arch arm64
+```
+
+* -lSystem: tell the linker to link executable with `libSystem.dylib`
+* -syslibroot: it's mandatory to tell the linker where to find `libSystem.dylib`
+* `xcrun -sdk -macosx --show-sdk-path`: dynamically use the currently active version of Xcode
+* -e start: tell the linker `start` is the entrypoint of our program (Darwin expects `main` by default)
+* -arch arm64: tell the linker our architecture is arm64, which is optional if you use apple silicon mac
