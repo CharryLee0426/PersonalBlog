@@ -102,7 +102,7 @@ print:  printReg    1
 
 The only difference between these two programs is add and smull.
 
-## 4. Conclusion
+## 4. First Conclusion
 
 These two given tables illustrate the performance difference between multiplication and addition instructions for integers arithmetic. Overall, it proves that addition instructions execute faster tha multiplication instructions for integers.
 
@@ -111,4 +111,142 @@ Firstly take a look at the first table. This table sorted those records by time 
 Regarding the second tables, time, instruction retired and cycle elapsed all have a very huge growth because the loop round number is much larger. The total time in four recordings is about 43s and system time is 0.10s approximately. In first round(i.e. the first two records), `add` needs 42.98s to run, which is 0.07s less than `mul` needs. With the optimisation of system, they can have the same performance, 42.99s. They need 840 billions retired instruction and about 137 cycles to finish the task.
 
 All in all, with the improvement made by processor, `mul` and `add` can have a similar performance. But at first time, `add` performs better without any optimisation. Thus we can get the conclusion that addition instructions execute faster than multiplications.
+
+## 5. Code Improve
+
+I learn that C programming language provides efficient library to measure the clock and time used in the program. Therefore I update the code in order to get rid of the time command. All in all, using in-code method to measure the clock and time used is more accuracy and elegant than using time command provided by UNIX. Here are the two updated codes.
+
+add.s
+
+```assembly
+.include "debug.s"
+.global main
+.p2align 2
+
+main:
+        mov     w1,     #1
+        mov     w2,     #2
+        mov     w4,     w1
+        mov     w5,     w2
+        mov     x3,     #0xffff
+        movk    x3,     #0xffff,    lsl #16
+        movk    x3,     #0x0007,    lsl #32
+        movk    x3,     #0x0000,    lsl #48
+
+        // start clock
+        stp     fp,     lr,     [sp, #-16]!
+        bl      _clock
+        ldp     fp,     lr,     [sp],   #16
+        mov     x8,     x0
+        str     x8,     [sp, #-16]!
+
+        // do add for x3-1 times
+loop:   subs    x3,     x3,     #1
+        b.eq    after
+        add     w1,     w1,     w2
+        mov     w1,     w4
+        mov     w2,     w5
+        b       loop
+
+        // end clock
+after:  stp     fp,     lr,     [sp, #-16]!
+        bl      _clock
+        ldp     fp,     lr,     [sp],   #16
+        mov     x9,     x0
+        str     x9,     [sp, #8]
+
+        // calculate
+        mov     x10,    #0x4240
+        movk    x10,    #0xf,   lsl #16
+        ldp     x8,     x9,     [sp]
+        ldr     x7,     [sp]
+        scvtf   d8,     x8
+        scvtf   d9,     x9
+        scvtf   d10,    x10
+        fsub    d8,     d9,     d8
+        fdiv    d8,     d8,     d10
+        fmov    x8,     d8
+
+        // results
+        printStr        "Add instructions speed test"
+        printStr        "Start Clock:"
+        printReg        7
+        printStr        "End Clock:"
+        printReg        9
+        printStr        "Time used:"
+        printDouble     8
+        printStr        ""
+        
+
+		// return 0
+        mov     x0,     #0
+        ret
+```
+
+mul.s
+
+```assembly
+.include "debug.s"
+.global main
+.p2align 2
+
+main:
+        mov     w1,     #1
+        mov     w2,     #2
+        mov     w4,     w1
+        mov     w5,     w2
+        mov     x3,     #0xffff
+        movk    x3,     #0xffff,    lsl #16
+        movk    x3,     #0x0007,    lsl #32
+        movk    x3,     #0x0000,    lsl #48
+
+        // start clock
+        stp     fp,     lr,     [sp, #-16]!
+        bl      _clock
+        ldp     fp,     lr,     [sp],   #16
+        mov     x8,     x0
+        str     x8,     [sp, #-16]!
+
+        // do add for x3-1 times
+loop:   subs    x3,     x3,     #1
+        b.eq    after
+        smull   x1,     w1,     w2
+        mov     w1,     w4
+        mov     w2,     w5
+        b       loop
+
+        // end clock
+after:  stp     fp,     lr,     [sp, #-16]!
+        bl      _clock
+        ldp     fp,     lr,     [sp],   #16
+        mov     x9,     x0
+        str     x9,     [sp, #8]
+
+        // calculate
+        mov     x10,    #0x4240
+        movk    x10,    #0xf,   lsl #16
+        ldp     x8,     x9,     [sp]
+        ldr     x7,     [sp]
+        scvtf   d8,     x8
+        scvtf   d9,     x9
+        scvtf   d10,    x10
+        fsub    d8,     d9,     d8
+        fdiv    d8,     d8,     d10
+        fmov    x8,     d8
+
+        // results
+        printStr        "Mul instructions speed test"
+        printStr        "Start Clock:"
+        printReg        7
+        printStr        "End Clock:"
+        printReg        9
+        printStr        "Time used:"
+        printDouble     8
+        printStr        ""
+        
+
+		// return 0
+        mov     x0,     #0
+        ret
+```
 
