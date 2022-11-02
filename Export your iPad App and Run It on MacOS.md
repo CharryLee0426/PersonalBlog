@@ -46,6 +46,7 @@ I musk acknowledge that there are some disadvantages of running iPadOS app on ma
 1. Some restrictions because of features lacking in iOS SDK;
 2. Possibly more memory needed;
 3. Potential bugs;
+4. Validation problems because of unenrollment of Apple Developer Program($99);
 
 However, it is very rare to meet because engineers in Apple considered a lot to make the converting framework very robust.
 
