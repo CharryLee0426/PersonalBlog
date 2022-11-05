@@ -45,7 +45,7 @@ This article is used to list some terms used in games. We non-naive speakers all
   * Sayu (早柚);
   * Raiden Shogun (雷电 将军);
   * Kuju Sara (九条 裟罗);
-  * Sangonomiya Kokomi ();
+  * Sangonomiya Kokomi (珊瑚宫 心海);
   * Thoma (托马, a Mondstadt name in fact);
   * Arataki Itto (荒泷 一斗);
   * Gorou (五郎);
