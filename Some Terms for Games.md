@@ -53,3 +53,11 @@ This article is used to list some terms used in games. We non-naive speakers all
   * Kamisato Ayato (神里 凌人);
   * Kuki Shinobu (九歧 忍);
   * Shikanoin Heizou (鹿野院 平藏);
+* Weapons in Genshin Impact:
+  * Sword (⚔️);
+  * Claymore (Heavy Sword);
+  * Polearm;
+  * Catalyst;
+  * Bows;
+* Rank(up to 5 for weapons);
+* Refining(up to 5 ranks);
