@@ -28,4 +28,27 @@ killall Dock
 ## 5. Airdrop Freezed
 There are some situations that you can't click the cancel button or do any other thing when you share some files (whatever their size are big or not), especially image files. The only solution is that force quiting your finder and it'll be reopened by the system automatically.
 
+## 6. Xcode Toolchain Missed
+After a main version upgrade, such as Big Sur to Montery, you will face an annoying thing. Almost all your toolchain have been removed. I don't know why Apple removes all of basic toolchain softwares such as gcc, git, and ldb. Thankfully, there are two solutions for this annoying bug.
+
+The first solution is very easy. You can execute `xcode-select --install` in terminal to reinstall the latest toolchain. In most cases, the installation process is very smooth.
+
+The principle of second solution is the same as the first. You can reinstall the latest toolchain through dmg provided by Apple Official. When you find that you cannot reinstall in terminal, please use it.
+
+## 7. AirDrop Screen Mirroring Doesn't Work
+I found that I couldn't stream my iPhone to my Mac after I upgraded my macOS to version 13. It is a new feature since macOS 12 that you can stream your iPhone or iPad to your Mac. Altough many people don't think it's a very useful feature, I like it very much. You can stream your iPad to your Mac and use your Mac to record your iPad's screen. Thus you don't need to worry about size of recordings.
+
+I googled how to solve it. However, Apple Support doesn't provide any solution. It just suggests users to check their devices if their AirDrop is open. The real solution is what I say below.
+
+First, I wanna show what the bug is.
+![](images/NotDetectMac.jpeg)
+
+Second, go to System settings -> general -> AirDrop & Handoff, turn on AirDrop Receiver. AirDrop Receiver can receive screen mirroring requests from your iPhone or iPad.
+
+![](images/Settings.png)
+
+Then you can see that your Mac appears in Screen Mirroring devices.
+
+![](images/CanDetectMac.jpeg)
+
 ***To be continued...***
