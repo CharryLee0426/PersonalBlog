@@ -249,6 +249,18 @@ git config --global --unset http.proxy "socks5://127.0.0.1:1086"
 git config --global --unset https.proxy "socks5://127.0.0.1:1086"
 ```
 
+**补充**：2023 年 1 月 22 日至 23 日上午，我的 shadowsocks 节点供应商暂时停止了服务。他提供的服务说实话，很便宜，而且速度也还可以。唯一的缺点就是，不是很稳定，在最近一段时期里，经常是用了大概 3 至 5 天以后就不能使用了。所以临时期间我又找了一家代理。这个代理很稳定，速度和可访问性也很棒。他的唯一缺点是贵！一个月如果使用 300 GB 的流量套餐是 40 人民币。不过我也没有几个月可用了，今年下半年我就要去往美国了。这个代理支持 shadowrocket 和 clashX 订阅。clashX 订阅使用了不同的端口，所以配置 git proxy 也会有所不同。
+
+应该使用：
+
+```bash
+git config --global http.proxy "http://127.0.0.1:7890"
+git config --global https.proxy "http://127.0.0.1:7890"
+git config --global all.proxy "socks5://127.0.0.1:7890"
+```
+
+删除这些代理配置的方法与上同。
+
 ### 15. 新增：如何配置 Xcode 上的 GitHub 环境
 
 如果按照新增问题 14 的操作进行的话，IDEA 和命令行上可以正常进行拉取和推送操作。但是在 Xcode 上 git 工具还是无法正常从仓库拉取和推送。我从一篇文章上找到了关于这个问题的报告，[点击这里](https://openradar.appspot.com/radar?id=5008610828484608)以访问（可能需要科学上网）。这里简述一下这个问题的原因。Xcode 使用了一个 `helper service` （com.apple.dt.Xcode.sourcecontrol.Git）访问 GIT 服务器，这个服务使用了一个开源库 `libgit2.dylib (version 0.26.0)`。当连接远程仓库时，该进程调用了这个库的一个 API `git_remote_connect(...)`，这个库通过一个 `git_proxy_options` 的枚举去选择 git 的代理策略。定义如下：
