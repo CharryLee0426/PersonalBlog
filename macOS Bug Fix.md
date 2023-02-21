@@ -51,4 +51,15 @@ Then you can see that your Mac appears in Screen Mirroring devices.
 
 ![](images/CanDetectMac.jpeg)
 
+## 8. Widgets
+It's an annoy bug on macOS 13. The widget select and edit page is very laggy. The page won't responce your clicks and even cause computer crash down! I have posted a question to talk about this big bug and notice macOS team to fix this disgusting thing asap.
+
+There is a temporary solution: type this command into your termnial and execute it.
+
+```bash
+killall NotificationCenter
+```
+
+I don't know how this bug happened. It seems like opening widget edit page cause memory leak. Maybe macOS team doesn't think it is a problem. Although there are not many people using it daily. Many people just adding some widgets once after initialization, then never open it again.
+
 ***To be continued...***
